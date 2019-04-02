@@ -6,6 +6,7 @@ ruby '2.6.1'
 #slim
 gem 'slim-rails'
 gem 'html2slim'
+
 # bootstrap
 gem 'bootstrap'
 # jquery
@@ -17,6 +18,10 @@ gem 'devise'
 # 日本語化
 gem 'rails-i18n'
 gem 'devise-i18n'
+
+# 画像アップローダー
+gem 'carrierwave'
+gem 'rmagick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
