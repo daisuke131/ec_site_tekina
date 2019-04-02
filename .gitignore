@@ -18,3 +18,4 @@ doc/
 .secret
 public/uploads/tmp/
 public/user_images/
+public/product_images/
