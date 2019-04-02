@@ -3,6 +3,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+#slim
+gem 'slim-rails'
+gem 'html2slim'
+# bootstrap
+gem 'bootstrap'
+# jquery
+gem 'jquery-rails'
+
+# ログイン機能
+gem 'devise'
+
+# 日本語化
+gem 'rails-i18n'
+gem 'devise-i18n'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
@@ -39,6 +54,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :development do
