@@ -12,12 +12,13 @@ html
         .container.menus.d-flex.justify-content-end
             .menu = link_to "トップ", root_path
             - if user_signed_in?
-                .menu = link_to "編集", edit_user_registration_path
-                .menu = link_to current_user.name, user_path(current_user)
-                .menu = link_to "ログアウト", destroy_user_session_path, method: :delete
+              .menu = link_to "商品登録", new_product_path
+              .menu = link_to "編集", edit_user_registration_path
+              .menu = link_to current_user.name, user_path(current_user)
+              .menu = link_to "ログアウト", destroy_user_session_path, method: :delete
             -else
-                .menu = link_to "新規登録", new_user_registration_path
-                .menu = link_to "ログイン", new_user_session_path
+              .menu = link_to "新規登録", new_user_registration_path
+              .menu = link_to "ログイン", new_user_session_path
     p.notice = notice
     p.alert = alert
     = yield

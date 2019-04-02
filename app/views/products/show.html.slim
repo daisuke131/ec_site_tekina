@@ -1,0 +1,11 @@
+h1 = @product.name
+= image_tag @product.image1_url(:thumb)
+p = @product.item_price
+
+/ 後から遷移先実装する
+= link_to "購入画面へ", "", class: "btn btn-danger w-100 py-2 font-weight-bold", style:"font-size: 24px;"
+
+p = simple_format @product.description
+- if @product.user_id == current_user.id
+  = link_to "編集", edit_product_path(@product)
+  = link_to "削除", product_path(@product), method: :delete, data: { confirm: "出品をキャンセルしますか？" }

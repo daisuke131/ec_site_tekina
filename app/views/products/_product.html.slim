@@ -1,0 +1,6 @@
+div style="border:1px solid;"
+  = image_tag product.image1_url(:thumb)
+  p = product.name
+  p = product.description
+  p = product.item_price
+  = link_to "詳細", product_path(product)
