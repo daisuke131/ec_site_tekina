@@ -23,6 +23,9 @@ gem 'devise-i18n'
 gem 'carrierwave'
 gem 'rmagick'
 
+# テンプレ
+gem 'active_decorator'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
@@ -62,6 +65,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'letter_opener'
   gem 'letter_opener_web'
+  gem 'faker'
 end
 
 group :development do
