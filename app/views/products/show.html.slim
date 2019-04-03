@@ -1,11 +1,15 @@
-h1 = @product.name
-= image_tag @product.image1_url(:thumb)
-p = @product.item_price
+.bg-light
+  .container.show-container.w-100
+    .bg-white.p-3.p-sm-4
+      h1.text-center = @product.name
+      = render "slide", product: @product
+      .h3.font-weight-bold.text-center.py-3 = @product.item_price
 
-/ 後から遷移先実装する
-= link_to "購入画面へ", "", class: "btn btn-danger w-100 py-2 font-weight-bold", style:"font-size: 24px;"
+      / 後から遷移先実装する
+      = link_to "購入画面へ", "", class: "btn btn-danger w-100 py-2 font-weight-bold", style:"font-size: 24px;"
 
-p = simple_format @product.description
-- if @product.user_id == current_user.id
-  = link_to "編集", edit_product_path(@product)
-  = link_to "削除", product_path(@product), method: :delete, data: { confirm: "出品をキャンセルしますか？" }
+      .item-infor = simple_format @product.description
+      - if @product.user_id == current_user.id
+        .d-flex.justify-content-end
+          = link_to "編集", edit_product_path(@product), class: "btn btn-outline-primary px-4 py-2 mr-3"
+          = link_to "削除", product_path(@product), method: :delete, data: { confirm: "出品をキャンセルしますか？" }, class: "btn btn-outline-danger px-4 py-2"

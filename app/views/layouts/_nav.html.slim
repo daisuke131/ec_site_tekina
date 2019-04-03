@@ -1,0 +1,20 @@
+nav.navbar.navbar-expand-lg.navbar-light.px-0
+  = link_to "メルカリっぽい", root_path, class:"navbar-brand"
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse.justify-content-end#navbarSupportedContent
+    ul.navbar-nav
+      - if user_signed_in?
+        li.nav-item
+          = link_to "編集", edit_user_registration_path, class:"nav-link"
+        li.nav-item
+          = link_to current_user.name, user_path(current_user), class:"nav-link"
+        li.nav-item
+          = link_to "商品登録", new_product_path, class:"nav-link"
+        li.nav-item
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link"
+      - else
+        li.nav-item
+          = link_to "新規登録", new_user_registration_path, class:"nav-link"
+        li.nav-item
+          = link_to "ログイン", new_user_session_path, class:"nav-link"

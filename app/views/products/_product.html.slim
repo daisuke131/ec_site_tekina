@@ -1,6 +1,9 @@
-div style="border:1px solid;"
-  = image_tag product.image1_url(:thumb)
-  p = product.name
-  p = product.description
-  p = product.item_price
-  = link_to "詳細", product_path(product)
+.col-sm-6.col-lg-4
+  .item.card.shadow
+    .image-outer
+      = image_tag product.image1_url(:thumb), class:"card-img-top"
+    .card-body
+      .h4 = product.name
+      .item_description = simple_format product.description
+      .h5.font-weight-bold.text-right = product.item_price
+      .d-flex.justify-content-end = link_to "詳細", product_path(product), class: "btn btn-outline-primary"

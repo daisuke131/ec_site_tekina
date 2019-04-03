@@ -1,8 +1,10 @@
-= simple_form_for @product do |f|
-  .field = f.input :name
-  .field = f.input :description
-  .field = f.input :price
-  .field = f.input :image1, as: :file, error: "画像を選択してください。"
-  .field = f.input :image2, as: :file
-  .field = f.input :image3, as: :file
-  .field = f.button :submit
+.pb-5
+  .bg-white.p-3.p-sm-5
+    = simple_form_for @product do |f|
+      .field = f.input :name
+      .field = f.input :description
+      .field = f.input :price
+      .field = f.input :image1, as: :file, error: "画像を選択してください。"
+      .field = f.input :image2, as: :file
+      .field = f.input :image3, as: :file
+      .field.clearfix = f.button :submit, :class => "btn-outline-primary float-right"
