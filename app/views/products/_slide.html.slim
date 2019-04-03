@@ -1,0 +1,23 @@
+- image1 = image_tag product.image1_url(:thumb), class:"d-block w-100 h-100"
+- image2 = image_tag product.image2_url(:thumb), class:"d-block w-100 h-100"
+- image3 = image_tag product.image3_url(:thumb), class:"d-block w-100 h-100"
+
+#carouselExampleIndicators.carousel.slide.items-slide.mx-auto data-ride="carousel"
+    .carousel-inner role="listbox"
+        .carousel-item.active
+            = image1
+        - if product.image2.present?
+            .carousel-item
+                = image2
+        - if product.image3.present?
+            .carousel-item
+                = image3
+        - if product.image2.present? || product.image3.present?
+            a.carousel-control-prev href="#carouselExampleIndicators" role="button" data-slide="prev"
+                span.carousel-control-prev-icon aria-hidden="true"
+                span.sr-only
+                    Previous
+            a.carousel-control-next href="#carouselExampleIndicators" role="button" data-slide="next"
+                span.carousel-control-next-icon aria-hidden="true"
+                span.sr-only
+                    Next

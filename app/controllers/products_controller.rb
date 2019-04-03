@@ -17,9 +17,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to root_path, notice: '出品完了しました。'
+      redirect_to root_path, notice: "出品完了しました。"
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -30,16 +30,16 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to product_path(params[:id]), notice: '商品情報を修正しました'
+      redirect_to product_path(params[:id]), notice: "商品情報を修正しました"
     else
-      render 'edit'
+      render "edit"
     end
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to root_path, notice: '出品をキャンセルしました。'
+    redirect_to root_path, notice: "出品をキャンセルしました。"
   end
 
   private
