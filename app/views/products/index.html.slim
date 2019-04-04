@@ -1,5 +1,9 @@
-.bg-light
-  .container.pt-5
-    h1.p-4.text-center 商品一覧
-    .row
-      = render @products
+.container.pt-5
+  .row
+    .col-3
+      = render "search_form"
+    .col-9
+      h3.mt-5.p-4 = "商品件数：#{@products.count}件"
+      = @basket_count
+      .row
+        = render @products

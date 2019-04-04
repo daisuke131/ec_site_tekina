@@ -8,12 +8,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do |i|
-  Product.create(
-    name: Faker::DragonBall.character,
-    description: Faker::Lorem.sentence,
-    price: 22 * (i+1),
-    user_id: 1,
-    category_id: 1
-  )
-end
+Category.create(name: "洋服")
+Category.create(name: "家電")
+Category.create(name: "ゲーム")
+Category.create(name: "スポーツ")
+Category.create(name: "レジャー")
+Category.create(name: "ホビー")
