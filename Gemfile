@@ -11,6 +11,8 @@ gem 'html2slim'
 gem 'bootstrap'
 # jquery
 gem 'jquery-rails'
+# font-awesome
+gem 'font-awesome-rails'
 
 # ログイン機能
 gem 'devise'
@@ -28,6 +30,9 @@ gem 'active_decorator'
 
 # フォーム
 gem 'simple_form'
+
+# 検索機能
+gem 'ransack'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

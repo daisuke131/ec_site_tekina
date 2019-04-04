@@ -11,6 +11,27 @@ header {
   }
 }
 
+.search {
+  position: fixed;
+  width: 260px;
+}
+
+.product-name {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-name:after {
+  position: absolute;
+  content: "";
+  padding-right: 5px;
+  height: 20px;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.7) 20%, white 80%);
+}
+
 .show-container {
   padding-top: 100px;
   padding-bottom: 50px;

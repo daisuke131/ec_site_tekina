@@ -2,9 +2,7 @@
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  def index
-    @products = Product.all.order(created_at: :desc)
-  end
+  def index; end
 
   def show
     @product = Product.find(params[:id])
@@ -45,6 +43,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image1, :image2, :image3).merge(user_id: current_user.id, category_id: 1)
+    params.require(:product).permit(:name, :category_id, :description, :price, :image1, :image2, :image3).merge(user_id: current_user.id)
   end
 end

@@ -1,0 +1,15 @@
+.search.shadow.bg-white.p-3.mt-5
+  = search_form_for @search do |f|
+    .field = f.label :description_cont, 'キーワード'
+    .field = f.search_field :description_cont, class: "form-control", placeholder: "例：新品"
+    .field = f.label :user_id_eq, 'カテゴリー'
+    .field = f.collection_select :category_id_eq, Category.all, :id, :name, {:include_blank => "すべて"}, {:class => "form-control"}
+    .field = f.label :price, '金額'
+    .field.row.pb-4
+      .col-5.pr-0
+        = f.number_field :price_gteq, class: "form-control", placeholder: "Min"
+      .col-2.p-0 style= "line-height:38px;"
+        .text-center = "〜"
+      .col-5.pl-0
+        = f.number_field :price_lteq, class: "form-control", placeholder: "Max"
+    .field.d-flex.justify-content-end = f.submit "検索", class: "btn btn-outline-primary"
