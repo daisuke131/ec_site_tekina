@@ -1,9 +1,9 @@
-.col-sm-6.col-lg-4
-  .item.card.shadow
+.col-6.col-lg-4
+  .product.card.shadow
     .image-outer
       = image_tag product.image1_url(:thumb), class:"card-img-top"
     .card-body
-      .h4.product-name = product.name
-      .item_description = simple_format product.description
-      .h5.font-weight-bold.text-right = product.item_price
+      .product-name = product.name
+      .product-description = simple_format product.description
+      .product-price.text-right = product.item_price
       .d-flex.justify-content-end = link_to "詳細", product_path(product), class: "btn btn-outline-primary"

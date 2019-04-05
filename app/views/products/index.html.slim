@@ -1,8 +1,8 @@
 .container.pt-5
   .row
-    .col-3
+    .d-none.d-lg-block.col-lg-4
       = render "search_form"
-    .col-9
+    .col-lg-8
       h3.mt-5.p-4 = "商品件数：#{@products.count}件"
       = @basket_count
       .row
