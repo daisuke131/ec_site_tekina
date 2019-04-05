@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   validates :name, presence: true
   mount_uploader :image, UserImageUploader
+  include Hashid::Rails
 end
