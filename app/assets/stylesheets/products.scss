@@ -8,23 +8,37 @@ header {
   z-index: 1020;
 }
 
-@media (min-width: 700px) {
-  .show-container {
-    max-width: 700px !important;
+.pc_product_register {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+
+  .btn {
+    width: 130px;
+    height: 130px;
+    line-height: 120px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 
-.search {
-  position: fixed;
-  width: 260px;
+.notice-alert {
+  font-size: 18px;
 }
 
-.product-name {
+@media (max-width: 1200px) {
+  .search {
+    width: 280px !important;
+  }
+}
+
+// １行省略
+@mixin one-omission {
   white-space: nowrap;
   overflow: hidden;
   position: relative;
 
-  // text-overflow: ellipsis;
   &:after {
     position: absolute;
     content: "";
@@ -32,25 +46,15 @@ header {
     height: 20px;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 1) 80%);
+    background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.7) 20%,
+      rgba(255, 255, 255, 1) 80%);
   }
 }
 
-.show-container {
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-
-.notice-alert {
-  font-size: 18px;
-}
-
-.item {
-  margin-bottom: 30px;
-}
-
-.item_description {
-  height: 100px;
+// 複数行省略
+@mixin many-omission {
   overflow: hidden;
   position: relative;
 
@@ -64,6 +68,40 @@ header {
     height: 20%;
     background: linear-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 1) 80%);
   }
+}
+
+// index
+.search {
+  position: fixed;
+  top: 100px;
+  width: 340px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  @include one-omission;
+}
+
+.product {
+  margin-bottom: 30px;
+}
+
+.product-description {
+  height: 100px;
+  @include many-omission;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+// show
+.show-container {
+  max-width: 700px !important;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 .items-slide {
@@ -118,4 +156,16 @@ header {
 .item-infor {
   font-size: 18px;
   padding: 30px 50px 0 50px;
+}
+
+.product.card {
+  a {
+    text-decoration: none;
+    color: #000;
+
+    &:hover {
+      box-shadow: 0px 6px 8px #333;
+      opacity: 0.6;
+    }
+  }
 }

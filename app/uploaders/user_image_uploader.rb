@@ -14,7 +14,7 @@ class UserImageUploader < CarrierWave::Uploader::Base
 
   # nilの時この画像を表示する
   def default_url
-    "/default_image.jpg"
+    "/user_images/default_user_image.jpg"
   end
 
   # デフォルト画像リサイズ

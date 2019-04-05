@@ -12,7 +12,7 @@ class ProductImage1Uploader < CarrierWave::Uploader::Base
 
   # nilの時この画像を表示する
   def default_url
-    "/product_images/default_image.jpg"
+    "/product_images/default_item_image.jpg"
   end
 
   # デフォルト画像リサイズ

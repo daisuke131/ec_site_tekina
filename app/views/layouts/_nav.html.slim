@@ -1,28 +1,50 @@
 nav.navbar.navbar-expand-lg.navbar-light.px-0
-  = link_to 'メルカリっぽい', root_path, class:"navbar-brand"
+  = link_to 'メル○リっぽい', root_path, class:"navbar-brand"
   button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     span.navbar-toggler-icon
   .collapse.navbar-collapse#navbarSupportedContent
     ul.navbar-nav.mr-auto.align-items-center
       - if user_signed_in?
-        li.nav-item
-          = link_to '商品登録', new_product_path, class:"nav-link"
-        li.nav-item
-          .dropdown.nav-link
-            a data-toggle="dropdown" href="#"
-              = image_tag current_user.image_url(:thumb), size: "50x50"
-            .dropdown-menu aria-labelledby="dropdownMenu1"
-              = link_to current_user.name, user_path(current_user), class:"dropdown-item"
-              = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"
+        = search_form_for @search do |f|
+          li.nav-item.d-none.d-lg-inline
+            form.form-inline.my-2.my-lg-0
+              .input-group
+                = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control", size: "100"
+                .input-group-append
+                  = button_tag type: 'submit', class: 'btn btn-outline-primary' do
+                    = fa_icon("search")
+          li.nav-item.d-none.d-lg-inline
+            .dropdown.nav-link
+              a data-toggle="dropdown" href="#"
+                = image_tag current_user.image_url(:thumb), size: "50x50", style:"border-radius:50%;"
+              .dropdown-menu
+                = link_to current_user.name, user_path(current_user), class:"dropdown-item"
+                = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"
+        / レスポンシブ検索
+        = search_form_for @search, class: "w-80" do |f|
+          .d-lg-none
+            li.nav-item.my-3
+              = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control"
+            li.nav-item.mb-3
+              = f.search_field :description_cont, class: "form-control", placeholder: "例：新品"
+            li.nav-item.mb-3
+              = f.collection_select :category_id_eq, Category.all, :id, :name, {:include_blank => "すべて"}, {:class => "form-control"}
+            li.nav-item.row.mb-3.mx-auto
+              .col-5.pr-0
+                = f.number_field :price_gteq, class: "form-control", placeholder: "Min"
+              .col-2.p-0 style= "line-height:38px;"
+                .text-center = "〜"
+              .col-5.pl-0
+                = f.number_field :price_lteq, class: "form-control", placeholder: "Max"
+            li.nav-item = f.submit "検索", class: "btn btn-outline-primary w-100"
+            li.nav-item = link_to current_user.name, user_path(current_user), class:"nav-link text-center"
+            li.nav-item = link_to "商品登録", new_product_path, class:"nav-link text-center"
+            li.nav-item = link_to 'ログアウト', destroy_user_session_path, class:"nav-link text-center"
       - else
         li.nav-item
           = link_to '新規登録', new_user_registration_path, class:"nav-link"
         li.nav-item
           = link_to 'ログイン', new_user_session_path, class:"nav-link"
-    form.form-inline.my-2.my-lg-0
-      = search_form_for @search, enforce_utf8: false do |f|
-        .input-group
-          = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control"
-          .input-group-append
-            = button_tag type: 'submit', class: 'btn btn-outline-primary' do
-              = fa_icon("search")
+/ 商品登録ボタンは商品一覧ページのときだけ表示
+- if params[:controller] == "products" && params[:action] == "index"
+  .pc_product_register.d-none.d-lg-inline = link_to "商品登録", new_product_path, class:"btn btn-primary"
