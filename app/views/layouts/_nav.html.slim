@@ -5,8 +5,6 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
   .collapse.navbar-collapse#navbarSupportedContent
     ul.navbar-nav.mr-auto.align-items-center
       - if user_signed_in?
-        li.nav-item
-          = link_to "商品登録", new_product_path
         = search_form_for @search do |f|
           li.nav-item.d-none.d-lg-inline
             form.form-inline.my-2.my-lg-0
@@ -40,9 +38,13 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
                 = f.number_field :price_lteq, class: "form-control", placeholder: "Max"
             li.nav-item = f.submit "検索", class: "btn btn-outline-primary w-100"
             li.nav-item = link_to current_user.name, user_path(current_user), class:"nav-link text-center"
+            li.nav-item = link_to "商品登録", new_product_path, class:"nav-link text-center"
             li.nav-item = link_to 'ログアウト', destroy_user_session_path, class:"nav-link text-center"
       - else
         li.nav-item
           = link_to '新規登録', new_user_registration_path, class:"nav-link"
         li.nav-item
           = link_to 'ログイン', new_user_session_path, class:"nav-link"
+/ 商品登録ボタンは商品一覧ページのときだけ表示
+- if params[:controller] == "products" && params[:action] == "index"
+  .pc_product_register.d-none.d-lg-inline = link_to "商品登録", new_product_path, class:"btn btn-primary"
