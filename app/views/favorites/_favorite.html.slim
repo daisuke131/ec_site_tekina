@@ -1,0 +1,9 @@
+span[id="favorite-#{product.id}"]
+  - if Favorite.find_by(user_id:current_user.id, product_id: product.id)
+    = link_to del_favorite_path(product), method: :delete, remote: true do
+      span = icon "fa", "star", class:"text-warning h4"
+  - else
+    = link_to favorite_path(product), method: :post, remote: true do
+      span = icon "far", "star", class:"text-warning h4"
+  / お気に入りの数
+  span.h4 = product.favorites_count

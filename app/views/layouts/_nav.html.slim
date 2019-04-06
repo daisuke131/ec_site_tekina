@@ -6,13 +6,17 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
     ul.navbar-nav.mr-auto.align-items-center
       - if user_signed_in?
         = search_form_for @search do |f|
+
+          / 商品検索
           li.nav-item.d-none.d-lg-inline
             form.form-inline.my-2.my-lg-0
               .input-group
                 = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control", size: "100"
                 .input-group-append
                   = button_tag type: 'submit', class: 'btn btn-outline-primary' do
-                    = fa_icon("search")
+                    = icon "fa", "search"
+
+          / ユーザーアイコン
           li.nav-item.d-none.d-lg-inline
             .dropdown.nav-link
               a data-toggle="dropdown" href="#"
@@ -20,7 +24,8 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
               .dropdown-menu
                 = link_to current_user.name, user_path(current_user), class:"dropdown-item"
                 = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"
-        / レスポンシブ検索
+
+        / レスポンシブ用
         = search_form_for @search, class: "w-80" do |f|
           .d-lg-none
             li.nav-item.my-3
@@ -45,6 +50,7 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
           = link_to '新規登録', new_user_registration_path, class:"nav-link"
         li.nav-item
           = link_to 'ログイン', new_user_session_path, class:"nav-link"
+
 / 商品登録ボタンは商品一覧ページのときだけ表示
 - if params[:controller] == "products" && params[:action] == "index"
   .pc_product_register.d-none.d-lg-inline = link_to "商品登録", new_product_path, class:"btn btn-primary"
