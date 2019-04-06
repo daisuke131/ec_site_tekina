@@ -26,9 +26,9 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
                 = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"
 
         / レスポンシブ用
-        - if params[:controller] == "products" && params[:action] == "index"
-          = search_form_for @search, class: "w-80" do |f|
-            .d-lg-none
+        = search_form_for @search, class: "w-80" do |f|
+          .d-lg-none
+            - if params[:controller] == "products" && params[:action] == "index"
               li.nav-item.my-3
                 = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control"
               li.nav-item.mb-3
@@ -43,9 +43,9 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
                 .col-5.pl-0
                   = f.number_field :price_lteq, class: "form-control", placeholder: "Max"
               li.nav-item = f.submit "検索", class: "btn btn-outline-primary w-100"
-        li.nav-item = link_to current_user.name, user_path(current_user), class:"nav-link text-center"
-        li.nav-item = link_to "商品登録", new_product_path, class:"nav-link text-center"
-        li.nav-item = link_to 'ログアウト', destroy_user_session_path, class:"nav-link text-center"
+            li.nav-item = link_to current_user.name, user_path(current_user), class:"nav-link text-center"
+            li.nav-item = link_to "商品登録", new_product_path, class:"nav-link text-center"
+            li.nav-item = link_to 'ログアウト', destroy_user_session_path, class:"nav-link text-center"
       - else
         li.nav-item
           = link_to '新規登録', new_user_registration_path, class:"nav-link"
