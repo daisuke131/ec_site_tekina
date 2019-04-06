@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root "products#index"
   resources :products
-  get 'search' => 'products#search'
+  get "users/:id/favorites" => "users#favorites", as: "user_favorite"
+  post "/favorite/:id" => "favorites#favorite", as: "favorite"
+  delete "/favorite/:id" => "favorites#del_favorite", as: "del_favorite"
+  get "search" => "products#search"
   devise_for :users
   resources :users, only: [:show]
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

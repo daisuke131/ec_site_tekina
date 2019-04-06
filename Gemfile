@@ -12,7 +12,7 @@ gem 'bootstrap'
 # jquery
 gem 'jquery-rails'
 # font-awesome
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 
 # ログイン機能
 gem 'devise'

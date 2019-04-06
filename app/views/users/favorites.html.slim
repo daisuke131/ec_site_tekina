@@ -5,10 +5,10 @@
     .p-4.text-center.h4 = link_to "編集", edit_user_registration_path(current_user)
     ul.nav.nav-tabs
       li.nav-item
-        .nav-link.active
+        = link_to user_path(current_user), class: "nav-link" do
           = "出品中"
       li.nav-item
-        = link_to user_favorite_path(current_user), class: "nav-link" do
+        .nav-link.active
           = "お気に入り"
       li.nav-item
         a.nav-link href="#!"
