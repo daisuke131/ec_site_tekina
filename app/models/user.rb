@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :products, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :like_products, through: :favorites, source: :product
+  has_many :favorite_products, through: :favorites, source: :product
   validates :name, presence: true
   mount_uploader :image, UserImageUploader
   include Hashid::Rails
