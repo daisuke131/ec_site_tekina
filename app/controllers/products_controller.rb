@@ -41,6 +41,27 @@ class ProductsController < ApplicationController
     redirect_to root_path, notice: "出品をキャンセルしました。"
   end
 
+  def charge
+    @product = Product.find(params[:id])
+    customer = Stripe::Customer.create(
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
+    )
+    charge = Stripe::Charge.create(
+      customer: customer.id,
+      amount: @product.price,
+      description: "商品ID:#{@product.id} 商品名:#{@product.name}",
+      currency: "jpy"
+    )
+    if @product.update(sold_flg: true) &&
+      Sold.create(user_id: current_user.id, product_id: @product.id)
+      redirect_to product_path(params[:id]), notice: "商品を購入しました！"
+    end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+  end
+
   private
 
   def product_params
