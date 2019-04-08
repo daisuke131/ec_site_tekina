@@ -148,3 +148,13 @@ header {
   box-shadow: 0px 6px 8px #333;
   opacity: 0.6;
 }
+
+button.stripe-button-el,
+button.stripe-button-el > span {
+  width: 100% !important;
+  font-size: 24px !important;
+  background-color: red !important;
+  background-image: none;
+  line-height: 50px !important;
+  height: 50px !important;
+}

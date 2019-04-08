@@ -34,6 +34,9 @@ gem 'simple_form'
 # 検索機能
 gem 'ransack'
 
+# クレジット決済機能
+gem 'stripe'
+
 # ページベーション
 gem 'kaminari'
 

@@ -14,5 +14,6 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Product.ransack(params[:q])
     @products = @search.result.order(created_at: :desc).page(params[:page]).per(PER)
+    @r = Product.includes(favorites: :users).where(favorites: { user_id: 1 }).select("product.*, user.name as user_name")
   end
 end

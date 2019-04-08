@@ -170,3 +170,14 @@ header {
     }
   }
 }
+
+// クレジット情報入力画面
+button.stripe-button-el,
+button.stripe-button-el>span {
+  width: 100% !important;
+  font-size: 24px !important;
+  background-color: red !important;
+  background-image: none;
+  line-height: 50px !important;
+  height: 50px !important;
+}
