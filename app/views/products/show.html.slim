@@ -11,7 +11,7 @@
     - unless @product.sold_flg || @product.user_id == current_user.id
       = form_tag charge_path(@product) do
         script.stripe-button data-amount="#{@product.price}" data-currency="jpy" data-description="クレジット決済" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" data-name="#{@product.name}を購入" data-email="#{current_user.email}" data-label="購入する" data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
-
+    .text-center = link_to "テスト用クレジット番号", "https://stripe.com/docs/testing#cards", target: :_blank
     .item-infor.p-2.p-lg-4 = simple_format @product.description
     / 編集、削除は出品したユーザーのときだけ表示
     - if @product.user_id == current_user.id
