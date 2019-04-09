@@ -17,6 +17,4 @@ class UsersController < ApplicationController
   def solds
     @products = current_user.products.where(sold_flg: true).page(params[:page]).per(PER)
   end
-
-
 end

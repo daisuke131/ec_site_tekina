@@ -2,12 +2,11 @@
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_product, only: %i[show edit update destroy charge]
 
   def index; end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  def show; end
 
   def new
     @product = Product.new
@@ -22,12 +21,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to product_path(params[:id]), notice: "商品情報を修正しました"
     else
@@ -36,13 +32,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to root_path, notice: "出品をキャンセルしました。"
   end
 
   def charge
-    @product = Product.find(params[:id])
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
       source: params[:stripeToken]
@@ -54,7 +48,7 @@ class ProductsController < ApplicationController
       currency: "jpy"
     )
     if @product.update(sold_flg: true) &&
-      Sold.create(user_id: current_user.id, product_id: @product.id)
+       Sold.create(user_id: current_user.id, product_id: @product.id)
       redirect_to product_path(params[:id]), notice: "商品を購入しました！"
     end
   rescue Stripe::CardError => e
@@ -63,6 +57,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :category_id, :description, :price, :image1, :image2, :image3).merge(user_id: current_user.id)
