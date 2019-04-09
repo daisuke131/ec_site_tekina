@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: ec_site_tekina_production
-  username: ec_site_tekina
-  password: <%= ENV['EC_SITE_TEKINA_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
