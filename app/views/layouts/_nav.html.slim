@@ -29,12 +29,19 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
         = search_form_for @search, class: "w-80" do |f|
           .d-lg-none
             - if params[:controller] == "products" && params[:action] == "index"
+              / 商品検索
               li.nav-item.my-3
                 = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control"
+              / キーワード検索
               li.nav-item.mb-3
                 = f.search_field :description_cont, class: "form-control", placeholder: "例：新品"
+              / カテゴリー検索
               li.nav-item.mb-3
                 = f.collection_select :category_id_eq, Category.all, :id, :name, {:include_blank => "すべて"}, {:class => "form-control"}
+              li.nav-item.mb-3.text-center
+                = f.label '販売中のみ'
+                span = f.check_box :sold_flg_false
+              / 金額検索
               li.nav-item.row.mb-3.mx-auto
                 .col-5.pr-0
                   = f.number_field :price_gteq, class: "form-control", placeholder: "Min"
