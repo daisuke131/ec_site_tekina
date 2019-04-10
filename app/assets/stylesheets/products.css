@@ -113,6 +113,15 @@ header {
   height: 100%;
 }
 
+.sold-mark {
+  width: 100%;
+  background-color: red;
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
 .carousel-item {
   position: relative;
 }
