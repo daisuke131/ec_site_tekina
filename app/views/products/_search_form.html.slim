@@ -4,6 +4,9 @@
     .field = f.search_field :description_cont, class: "form-control", placeholder: "例：新品"
     .field = f.label :user_id_eq, 'カテゴリー'
     .field = f.collection_select :category_id_eq, Category.all, :id, :name, {:include_blank => "すべて"}, {:class => "form-control"}
+    .py-2.pt-3
+      = f.label '販売中のみ'
+      span = f.check_box :sold_flg_false
     .field = f.label :price, '金額'
     .field.row.pb-4
       .col-5.pr-0
