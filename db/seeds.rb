@@ -14,3 +14,4 @@ Category.create(name: "ゲーム")
 Category.create(name: "スポーツ")
 Category.create(name: "レジャー")
 Category.create(name: "ホビー")
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
