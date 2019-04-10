@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 
 # ログイン機能
+gem 'activeadmin'
 gem 'devise'
 
 # 日本語化
