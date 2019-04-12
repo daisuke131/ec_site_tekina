@@ -13,7 +13,7 @@
         .product-description = simple_format product.description
         / お気に入りマーク
         .d-flex.justify-content-end.pb-2
-          - if product.favorited_by?(current_user)
+          - if product.favorite_user_id.present?
             span = icon "fa", "star", class:"text-warning h5"
           -else
             span = icon "far", "star", class:"text-warning h5"

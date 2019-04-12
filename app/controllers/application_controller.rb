@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   # ヘッダーの商品名検索
   def set_search
     @search = Product.ransack(params[:q])
-    @products = @search.result.order(created_at: :desc).page(params[:page]).per(PER)
-    @r = Product.includes(favorites: :users).where(favorites: { user_id: 1 }).select("product.*, user.name as user_name")
+    @products = @search.result.left_joins(:favorites).where(favorites: {user_id: [nil, current_user.id]}).select("products.*, favorites.user_id as favorite_user_id").order(created_at: :desc).page(params[:page]).per(PER)
   end
 end
