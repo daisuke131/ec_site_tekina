@@ -4,7 +4,10 @@
       = render "search_form"
     .col-lg-8
       h3.mt-5.p-4 = "商品件数：#{@products.total_count}件"
-      = @basket_count
+      = "並び替え："
+      span.p-2 = sort_link(@search, :created_at, "登録順", default_order: :desc)
+      span.p-2 = sort_link(@search, :price, "金額")
+      span.p-2 = sort_link(@search, :favorites_count, "お気に入り", default_order: :desc)
       .row
         = render @products
       .pagination style="justify-content: center;" = paginate @products
