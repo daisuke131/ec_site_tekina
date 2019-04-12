@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_search
+  before_action :set_search, if: :use_before_action?
   PER = 18
 
   def configure_permitted_parameters
@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Product.ransack(params[:q])
     @products = @search.result.left_joins(:favorites).where(favorites: {user_id: [nil, current_user.id]}).select("products.*, favorites.user_id as favorite_user_id").order(created_at: :desc).page(params[:page]).per(PER)
+  end
+
+  def use_before_action?
+    params[:controller] == "products" && params[:action] == "index"
   end
 end
