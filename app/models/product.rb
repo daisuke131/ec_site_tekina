@@ -11,8 +11,4 @@ class Product < ApplicationRecord
   mount_uploader :image2, ProductImage2Uploader
   mount_uploader :image3, ProductImage3Uploader
   include Hashid::Rails
-
-  def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
-  end
 end
