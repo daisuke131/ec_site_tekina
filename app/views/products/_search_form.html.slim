@@ -5,7 +5,7 @@
     .field = f.label :user_id_eq, 'カテゴリー'
     .field = f.collection_select :category_id_eq, Category.all, :id, :name, {:include_blank => "すべて"}, {:class => "form-control"}
     .field = f.label '販売状態'
-    .field = f.select :sold_flg, [["販売中", 0]], {:include_blank => "すべて"}, {:class => "form-control"}
+    .field = f.select :sold_flg_eq, [["販売中", false]], {:include_blank => "すべて"}, {:class => "form-control"}
     .field = f.label :price, '金額'
     .field.row.pb-4
       .col-5.pr-0
