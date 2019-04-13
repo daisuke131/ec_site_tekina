@@ -13,10 +13,15 @@ class ApplicationController < ActionController::Base
   # ヘッダーの商品名検索
   def set_search
     @search = Product.ransack(params[:q])
-    @products = @search.result.left_joins(:favorites).where(favorites: {user_id: [nil, current_user.id]}).select("products.*, favorites.user_id as favorite_user_id").order(created_at: :desc).page(params[:page]).per(PER)
+    @products = @search.result.order("created_at desc").page(params[:page]).per(PER)
+    @user_favorites = Favorite.where(user_id: current_user.id).pluck(:product_id)
   end
 
   def use_before_action?
-    params[:controller] == "products" && params[:action] == "index"
+    if current_user
+      params[:controller] == "products" && params[:action] == "index"
+    else
+      false
+    end
   end
 end
