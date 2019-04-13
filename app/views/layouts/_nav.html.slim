@@ -39,7 +39,7 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
               li.nav-item.mb-3
                 = f.collection_select :category_id_eq, Category.all, :id, :name, {:include_blank => "すべて"}, {:class => "form-control"}
               li.nav-item.mb-3.text-center
-                = f.select :sold_flg, [["販売中", 0]], {:include_blank => "すべて"}, {:class => "form-control"}
+                = f.select :sold_flg_eq, [["販売中", false]], {:include_blank => "すべて"}, {:class => "form-control"}
               / 金額検索
               li.nav-item.row.mb-3.mx-auto
                 .col-5.pr-0
