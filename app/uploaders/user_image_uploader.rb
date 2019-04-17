@@ -2,7 +2,11 @@
 
 class UserImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  storage :file
+  if Rails.env.development? || Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
 
   # jpgにコンバート
   process convert: "jpg"
