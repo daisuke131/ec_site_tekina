@@ -25,6 +25,7 @@ gem 'devise-i18n'
 # 画像アップローダー
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog'
 
 # テンプレ
 gem 'active_decorator'
