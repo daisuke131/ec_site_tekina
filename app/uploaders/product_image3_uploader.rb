@@ -1,10 +1,11 @@
 class ProductImage3Uploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  if Rails.env.development? || Rails.env.test?
-    storage :file
-  else
-    storage :fog
-  end
+  # if Rails.env.development? || Rails.env.test?
+  #   storage :fog
+  # else
+  #   storage :file
+  # end
+  storage :fog
 
   # jpgにコンバート
   process convert: "jpg"
