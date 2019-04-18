@@ -10,6 +10,6 @@ CarrierWave.configure do |config|
     aws_secret_access_key: "3t8UmlbyZ7nwm9uEBdNSnlPsJgDqOpk8Bm+3bR4T",
     region: "us-west-2",
   }
-  config.fog_directory = "rails-ecsite-tekina"
+  config.fog_directory = "ec-site-tekina"
   config.fog_public = false
 end
