@@ -2,11 +2,7 @@
 
 class UserImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  # if Rails.env.development? || Rails.env.test?
-  #   storage :fog
-  # else
-  #   storage :file
-  # end
+  # S3にアップロード
   storage :fog
 
   # jpgにコンバート
