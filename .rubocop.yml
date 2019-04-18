@@ -1,26 +1,13 @@
-Rails:
-  Enabled: true
-
+inherit_gem:
+  onkcop:
+    - "config/rubocop.yml"
+    - "config/rails.yml"
+    - "config/rspec.yml"
 AllCops:
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.6.1
+  TargetRailsVersion: 5.2.3
   Exclude:
-    - vendor/bundle/**/*
-    - bin/*
-    - db/**/*
-    - config/**/*
-    - Gemfile
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Metrics/LineLength:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
+    - "vendor/**/*" # rubocop config/default.yml
+    - "db/schema*.rb"
+    - "node_modules/**/*"
+    - "db/migrate/**/*"

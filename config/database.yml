@@ -47,8 +47,13 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: ec_site_tekina_production
+  username: ec_site_tekina
+  password: <%= ENV['EC_SITE_TEKINA_DATABASE_PASSWORD'] %>
