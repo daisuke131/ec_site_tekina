@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   get "search" => "products#search"
   devise_for :users, skip: :session
   devise_scope :user do
-      get 'login' => 'devise/sessions#new', as: :new_user_session
-      post 'login' => 'devise/sessions#create', as: :user_session
-      delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
+    get "login" => "devise/sessions#new", as: :new_user_session
+    post "login" => "devise/sessions#create", as: :user_session
+    delete "logout" => "devise/sessions#destroy", as: :destroy_user_session
   end
   resources :users, only: [:show]
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
