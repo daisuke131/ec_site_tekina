@@ -1,7 +1,11 @@
 class ProductImage2Uploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  # S3にアップロード
-  storage :fog
+  if Rails.env.development? || Rails.env.test?
+    storage :file
+  else
+    # S3にアップロード
+    storage :fog
+  end
 
   # jpgにコンバート
   process convert: "jpg"

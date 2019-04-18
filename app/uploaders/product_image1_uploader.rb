@@ -1,15 +1,18 @@
 class ProductImage1Uploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  # S3にアップロード
-  storage :fog
+  if Rails.env.development? || Rails.env.test?
+    storage :file
+  else
+    # S3にアップロード
+    storage :fog
+  end
 
   # jpgにコンバート
   process convert: "jpg"
 
   # 保存ディレクトリ名
   def store_dir
-    # "product_images/#{model.id}"
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "product_images/#{model.id}"
   end
 
   # nilの時この画像を表示する
