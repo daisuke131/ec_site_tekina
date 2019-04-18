@@ -16,6 +16,7 @@
     / 編集、削除は出品したユーザーのときだけ表示
     - if @product.user_id == current_user.id
       .d-flex.justify-content-end
-        - if @product.sold_flg == 0
+        - binding.pry
+        - if !@product.sold_flg
           = link_to "編集", edit_product_path(@product), class: "btn btn-outline-primary px-4 py-2 mr-3"
         = link_to "削除", product_path(@product), method: :delete, data: { confirm: "出品をキャンセルしますか？" }, class: "btn btn-outline-danger px-4 py-2"
