@@ -21,3 +21,5 @@ public/user_images/*
 !/public/user_images/default_user_image.jpg
 public/product_images/*
 !/public/product_images/default_item_image.jpg
+yarn.lock
+node_modules/
