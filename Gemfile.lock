@@ -111,9 +111,15 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.8.0)
       devise (>= 4.6)
+    diff-lcs (1.3)
     erubi (1.8.0)
     excon (0.64.0)
     execjs (2.7.0)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.2)
+      factory_bot (~> 5.0.2)
+      railties (>= 4.2.0)
     faker (1.9.3)
       i18n (>= 0.7)
     faraday (0.15.4)
@@ -231,6 +237,8 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     psych (3.1.0)
     public_suffix (3.0.3)
     puma (3.12.1)
@@ -279,6 +287,23 @@ GEM
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
     rmagick (3.0.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
     rubocop (0.67.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -380,6 +405,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-i18n
+  factory_bot_rails
   faker
   fog-aws
   font-awesome-sass
@@ -394,11 +420,13 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   onkcop
   pry-byebug
+  pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails-i18n
   ransack
   rmagick
+  rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form
