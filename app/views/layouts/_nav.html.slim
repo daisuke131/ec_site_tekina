@@ -4,18 +4,20 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
     span.navbar-toggler-icon
   .collapse.navbar-collapse#navbarSupportedContent
     ul.navbar-nav.mr-auto.align-items-center
+      / - if user_signed_in?
+
+      - if params[:controller] == "products" && params[:action] == "index"
+        = search_form_for @search do |f|
+          / 商品検索
+          li.nav-item.d-none.d-lg-inline
+            form.form-inline.my-2.my-lg-0
+              .input-group
+                = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control", size: "100"
+                .input-group-append
+                  = button_tag type: 'submit', class: 'btn btn-outline-primary' do
+                    = icon "fa", "search"
       - if user_signed_in?
-        - if params[:controller] == "products" && params[:action] == "index"
-          = search_form_for @search do |f|
-            / 商品検索
-            li.nav-item.d-none.d-lg-inline
-              form.form-inline.my-2.my-lg-0
-                .input-group
-                  = f.search_field :name_cont, placeholder: "商品名入力", class:"form-control", size: "100"
-                  .input-group-append
-                    = button_tag type: 'submit', class: 'btn btn-outline-primary' do
-                      = icon "fa", "search"
-          / ユーザーアイコン
+        / ユーザーアイコン
         li.nav-item.d-none.d-lg-inline
           .dropdown.nav-link
             a data-toggle="dropdown" href="#"
@@ -23,9 +25,11 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
             .dropdown-menu
               = link_to current_user.name, user_path(current_user), class:"dropdown-item"
               = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"
+      - else
+        li.nav-item
+          = link_to 'ログイン', new_user_session_path, class:"nav-link"
 
         / レスポンシブ用
-
         .d-lg-none
           - if params[:controller] == "products" && params[:action] == "index"
             = search_form_for @search, class: "w-80" do |f|
@@ -51,15 +55,17 @@ nav.navbar.navbar-expand-lg.navbar-light.px-0
               li.nav-item = f.submit "検索", class: "btn btn-outline-primary w-100"
 
 
-
-          li.nav-item = link_to current_user.name, user_path(current_user), class:"nav-link text-center"
-          li.nav-item = link_to "商品登録", new_product_path, class:"nav-link text-center"
-          li.nav-item = link_to 'ログアウト', destroy_user_session_path, class:"nav-link text-center"
-      - else
-        li.nav-item
-          = link_to '新規登録', new_user_registration_path, class:"nav-link"
-        li.nav-item
-          = link_to 'ログイン', new_user_session_path, class:"nav-link"
+          - if user_signed_in?
+            li.nav-item = link_to current_user.name, user_path(current_user), class:"nav-link text-center"
+            li.nav-item = link_to "商品登録", new_product_path, class:"nav-link text-center"
+            li.nav-item = link_to 'ログアウト', destroy_user_session_path, class:"nav-link text-center"
+          / - else
+          /   = link_to 'ログイン', new_user_session_path, class:"nav-link"
+      / - else
+      /   li.nav-item
+      /     = link_to '新規登録', new_user_registration_path, class:"nav-link"
+      /   li.nav-item
+      /     = link_to 'ログイン', new_user_session_path, class:"nav-link"
 
 / 商品登録ボタンは商品一覧ページのときだけ表示
 - if params[:controller] == "products" && params[:action] == "index"

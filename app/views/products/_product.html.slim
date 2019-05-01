@@ -12,11 +12,12 @@
         / 商品説明
         .product-description = simple_format product.description
         / お気に入りマーク
-        .d-flex.justify-content-end.pb-2
-          - if @user_favorites.include?(product.id)
-            span = icon "fa", "star", class:"text-warning h5"
-          -else
-            span = icon "far", "star", class:"text-warning h5"
-          span.h5 = product.favorites_count
+        - if user_signed_in?
+          .d-flex.justify-content-end.pb-2
+            - if @user_favorites.include?(product.id)
+              span = icon "fa", "star", class:"text-warning h5"
+            -else
+              span = icon "far", "star", class:"text-warning h5"
+            span.h5 = product.favorites_count
         / 金額
         .product-price.text-right = product.item_price
