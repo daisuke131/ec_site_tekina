@@ -5,9 +5,9 @@ if Rails.env.production?
       provider: "AWS",
       aws_access_key_id: ENV["ACCESS_KEY_ID"],
       aws_secret_access_key: ENV["SECRET_ACCESS_KEY"],
-      region: "us-west-2",
+      region: "ap-northeast-1",
     }
-    config.fog_directory = "ec-tekina"
+    config.fog_directory = "ecsite-poi"
     config.fog_public = false
   end
 end
