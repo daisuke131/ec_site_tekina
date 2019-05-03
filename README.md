@@ -23,9 +23,7 @@ $ bundle exec rspec
 
 ## heroku
 
-```
 https://ecsite-mitaina.herokuapp.com/
-```
 
 ## docker command
 
