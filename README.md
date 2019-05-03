@@ -1,11 +1,40 @@
-# README
+># This is ecsite app
 
->## This is ecsite app
+## development
 
-1. heroku :
+### version
+
+```
+ruby version 2.6.1
+rails version 5.2.3
+```
+
+### install
+
+```
+$ bundle install --path vendor/bundle
+```
+
+### test command
+
+```
+$ bundle exec rspec
+```
+
+## heroku
+
 https://ecsite-mitaina.herokuapp.com/
 
-2. docker command
+## docker command
 
-    * build : `$ docker-compose build`
-    * start : `$ docker-compose up`
+### build
+
+```
+$ docker-compose build
+```
+
+### start
+
+```
+$ docker-compose up
+```
