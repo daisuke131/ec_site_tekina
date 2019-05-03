@@ -14,14 +14,17 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Product.ransack(params[:q])
     @products = @search.result.order("created_at desc").page(params[:page]).per(PER)
-    @user_favorites = Favorite.where(user_id: current_user.id).pluck(:product_id)
+    if user_signed_in?
+      @user_favorites = Favorite.where(user_id: current_user.id).pluck(:product_id)
+    end
   end
 
   def use_before_action?
-    if current_user
-      params[:controller] == "products" && params[:action] == "index"
-    else
-      false
-    end
+    # if current_user
+    #   params[:controller] == "products" && params[:action] == "index"
+    # else
+    #   false
+    # end
+    params[:controller] == "products" && params[:action] == "index"
   end
 end

@@ -5,10 +5,11 @@
     = render "slide", product: @product
     .h3.font-weight-bold.text-center.py-3 = @product.item_price
     / お気に入りボタン
-    .d-flex.justify-content-end.pb-2 = render 'favorites/favorite', product: @product
+    - if user_signed_in?
+      .d-flex.justify-content-end.pb-2 = render 'favorites/favorite', product: @product
 
     / 購入ボタン
-    - if !@product.sold_flg && @product.user_id != current_user.id
+    - if user_signed_in? && !@product.sold_flg && @product.user_id != current_user.id
       = form_tag charge_path(@product) do
         script.stripe-button data-amount="#{@product.price}\
         " data-currency="jpy" data-description="クレジット決済\
@@ -18,7 +19,7 @@
     .text-center = link_to "テスト用クレジット番号", "https://stripe.com/docs/testing#cards", target: :_blank
     .item-infor.p-2.p-lg-4 = simple_format @product.description
     / 編集、削除は出品したユーザーのときだけ表示
-    - if @product.user_id == current_user.id
+    - if user_signed_in? && @product.user_id == current_user.id
       .d-flex.justify-content-end
         - if !@product.sold_flg
           = link_to "編集", edit_product_path(@product), class: "btn btn-outline-primary px-4 py-2 mr-3"
