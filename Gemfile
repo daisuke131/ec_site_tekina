@@ -43,7 +43,7 @@ gem "stripe"
 gem "kaminari"
 
 # 商品ID暗号化
-gem "hashid-rails"
+# gem "hashid-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.3"
