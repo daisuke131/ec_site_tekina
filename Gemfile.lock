@@ -151,10 +151,6 @@ GEM
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
-    hashid-rails (1.2.2)
-      activerecord (>= 4.0)
-      hashids (~> 1.0)
-    hashids (1.0.5)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -409,7 +405,6 @@ DEPENDENCIES
   faker
   fog-aws
   font-awesome-sass
-  hashid-rails
   html2slim
   jbuilder (~> 2.5)
   jquery-rails

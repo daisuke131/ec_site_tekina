@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+ # frozen_string_literal: true
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -12,5 +12,5 @@ class User < ApplicationRecord
   has_many :sold_products, through: :solds, source: :product
   validates :name, presence: true
   mount_uploader :image, UserImageUploader
-  include Hashid::Rails
+  # include Hashid::Rails
 end

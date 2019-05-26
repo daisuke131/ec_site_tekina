@@ -10,5 +10,5 @@ class Product < ApplicationRecord
   mount_uploader :image1, ProductImage1Uploader
   mount_uploader :image2, ProductImage2Uploader
   mount_uploader :image3, ProductImage3Uploader
-  include Hashid::Rails
+  # include Hashid::Rails
 end
