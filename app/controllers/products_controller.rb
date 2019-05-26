@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  # before_action :authenticate_user!
-  # skip_before_action :authenticate_user!, only: %i[index show]
-  # skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :charge]
-  before_action :set_product, only: %i[show edit update destroy charge]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_product, only: [:update, :destroy, :charge]
 
   def index
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def new
@@ -18,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
     if @product.save
       redirect_to root_path, notice: "出品完了しました。"
     else
@@ -27,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
@@ -65,10 +64,10 @@ class ProductsController < ApplicationController
   private
 
     def set_product
-      @product = Product.find(params[:id])
+      @product = current_user.products.find(params[:id])
     end
 
     def product_params
-      params.require(:product).permit(:name, :category_id, :description, :price, :image1, :image2, :image3).merge(user_id: current_user.id)
+      params.require(:product).permit(:name, :category_id, :description, :price, :image1, :image2, :image3)
     end
 end
